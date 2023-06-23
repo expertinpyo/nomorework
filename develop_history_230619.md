@@ -95,6 +95,8 @@ application.yml 설정 파일로 Spring Boot의 설정을 구성한다.
 
 - dto
 
+- security
+
   
 
 
@@ -199,6 +201,44 @@ application.yml 설정 파일로 Spring Boot의 설정을 구성한다.
         - 다양한 DB 시스템과의 호환성 가짐
         - 변경 내역의 롤백 지원함
         - 복잡한 스키마 변경 및 데이터 변환 작업에 유용함
+  
+    
+  
+  - 프로젝트에 Flyway 적용하기
+  
+    - 2023.06.22 현재 지속적으로 문제가 발생하고 있다. 프로젝트 진행을 위해 우선은 ddl-auto = update를 사용하고, flyway는 추후 적용하도록 한다.
+
+
+
+- id는 @Id를 사용해 Primary Key임을 나타냄과 동시에 자동 증가를 하게 도와주는 @GeneratedValue(strategy = GenerationType.IDENTITY) 어노테이션을 사용해 정의한다.
+- 
+
+
+
+
+
+### Security - Login
+
+
+
+로그인은 Google과 Naver OAuth2를 이용한다.
+
+- 왜 OAuth2를 사용하는가?
+  1. 안전한 인증
+     - OAuth2는 사용자의 비밀번호를 직접 DB에 저장하지 않고, Provider(google, naver 등)로부터 발급된 토큰을 사용해 인증을 처리한다.
+  2. 사용자 편의성
+     - OAuth2를 사용하면 사용자는 자체 계정을 만들 필요가 없다.
+  3. 타사 API 접근 용이
+     - ex, google OAuth2를 사용하면 해당 계정의 Google Calendar에 접근 가능함
+
+
+
+Spring Boot에서는 OAuth2 구현을 위해 하기의 의존성 주입을 실시한다.
+
+- spring-boot-starter-security
+  - 인증/인가를 도와주는 역할
+- spring-boot-starter-oauth2-client
+  - OAuth2 / OpenID 연결을 도와주는 역할
 
 
 
