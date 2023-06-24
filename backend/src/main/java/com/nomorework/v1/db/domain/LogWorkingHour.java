@@ -9,12 +9,17 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import java.time.LocalDateTime;
+import lombok.Builder;
+import lombok.Getter;
 import lombok.ToString;
 
 @Entity
 @Table(name="LogWorkingHour")
 @ToString
+@Getter
 public class LogWorkingHour {
+
+    public LogWorkingHour(){};
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -29,4 +34,12 @@ public class LogWorkingHour {
 
     private LocalDateTime nonWorkingTime;
 
+    @Builder
+    public LogWorkingHour(Long id, LocalDateTime startTime, LocalDateTime endTime, Day day, LocalDateTime nonWorkingTime){
+        this.id = id;
+        this.startTime = startTime;
+        this.endTime = endTime;
+        this.day = day;
+        this.nonWorkingTime = nonWorkingTime;
+    }
 }

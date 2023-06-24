@@ -12,16 +12,16 @@ spring:
     hibernate:
       ddl-auto: update
 
-  security:
-    oauth2:
-      client:
-        registration:
-          google:
-            client-id: ${NMW_GOOGLE_CLIENT_NAME}
-            client-secret: ${NMW_GOOGLE_CLIENT_SECRET}
-            scope:
-              - email
-              - profile
+#  security:
+#    oauth2:
+#      client:
+#        registration:
+#          google:
+#            client-id: ${NMW_GOOGLE_CLIENT_NAME}
+#            client-secret: ${NMW_GOOGLE_CLIENT_SECRET}
+#            scope:
+#              - email
+#              - profile
 
 
 #flyway:
