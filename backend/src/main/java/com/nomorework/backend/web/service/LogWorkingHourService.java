@@ -1,4 +1,4 @@
-package com.nomorework.v1.web.service;
+package com.nomorework.backend.web.service;
 
 public interface LogWorkingHourService {
 

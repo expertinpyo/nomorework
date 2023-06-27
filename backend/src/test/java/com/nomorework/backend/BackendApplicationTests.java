@@ -1,4 +1,4 @@
-package com.nomorework.v1;
+package com.nomorework.backend;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

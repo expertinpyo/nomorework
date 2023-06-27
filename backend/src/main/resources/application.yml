@@ -1,31 +1,10 @@
-server:
-  port: 8081
-
 spring:
   datasource:
-    url: ${NMW_DB_URL}
-    username: ${NMW_DB_USERNAME}
-    password: ${NMW_DB_PASSWORD}
+    url: jdbc:mysql://localhost:3307/nomorework
+    username: root
+    password: root
     driver-class-name: com.mysql.cj.jdbc.Driver
 
   jpa:
     hibernate:
       ddl-auto: update
-
-#  security:
-#    oauth2:
-#      client:
-#        registration:
-#          google:
-#            client-id: ${NMW_GOOGLE_CLIENT_NAME}
-#            client-secret: ${NMW_GOOGLE_CLIENT_SECRET}
-#            scope:
-#              - email
-#              - profile
-
-
-#flyway:
-#  enabled: true
-#  locations: classpath:db/migration
-
-
