@@ -1,46 +1,45 @@
-package com.nomorework.backend.data.domain;
+package com.nomorework.v1.db.domain;
 
+import com.nomorework.v1.enums.Day;
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import java.time.LocalDateTime;
 import lombok.Builder;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 import lombok.ToString;
-import org.hibernate.annotations.OnDelete;
-import org.hibernate.annotations.OnDeleteAction;
 
 @Entity
 @Table(name="LogWorkingHour")
 @ToString
 @Getter
-@NoArgsConstructor
 public class LogWorkingHour {
+
+    public LogWorkingHour(){};
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     private LocalDateTime startTime;
-    private LocalDateTime endTime;
+
+    private  LocalDateTime endTime;
+
+    @Enumerated(EnumType.STRING) // Enum String으로 사용하겠다!
+    private Day day;
 
     private LocalDateTime nonWorkingTime;
 
-    @ManyToOne
-    @JoinColumn(name = "user_id")
-    @OnDelete(action = OnDeleteAction.CASCADE)
-    private User user;
-
     @Builder
-    public LogWorkingHour(LocalDateTime startTime, LocalDateTime endTime, LocalDateTime nonWorkingTime, User user){
+    public LogWorkingHour(Long id, LocalDateTime startTime, LocalDateTime endTime, Day day, LocalDateTime nonWorkingTime){
+        this.id = id;
         this.startTime = startTime;
         this.endTime = endTime;
+        this.day = day;
         this.nonWorkingTime = nonWorkingTime;
-        this.user = user;
     }
 }
